@@ -27,7 +27,7 @@
                <input class="blue_btn" id="cancel" type="button" value="취소"/>
             </form>
 			<div id="content2">
-				<div class="box">
+				<div class="box" id="print_box">
 					<div class="qr_image">
 				   <?php
 				   for($i=1; $i<=40; $i++)

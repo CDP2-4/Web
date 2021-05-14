@@ -22,7 +22,7 @@
 			<li><div class="subTitle">QR Generation</div></li>
 		</ul>
 		<div id="content2">
-			<div class="box">
+			<div class="box" id="qrfrm_box">
 				<div class="qrfrm_content">
 					 <div class = "list_title" id="list_title">
 						생성 개수
