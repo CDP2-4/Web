@@ -1,0 +1,54 @@
+.container {
+	display:flex;
+	flex-direction: column;
+}
+
+.box {
+	position:relative;
+	width: 90%;
+	border: 1px solid #A6A6A6;
+	margin-left: 2rem;
+}
+
+.box:after {
+	content: "";
+	display: block;
+	padding-bottom: 20%;
+}
+
+.qrfrm_content {
+	text-align: center;
+	padding-top: 15%;
+}
+
+.qr_image {
+	margin-top: 3%;
+	text-align: center;
+}
+
+#list_title {
+	display:inline-block;
+	padding-right:22%;
+	padding-bottom:0.5rem;
+}
+
+#next {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+#print_form {
+	display:inline-block;
+	position:relative;
+	left:47%;
+	top:12%;
+}
+
+#QR_input {
+	margin-top: 5px;
+	width: 16rem;
+}
+
+#cancel {
+	margin-left: 10px;
+}

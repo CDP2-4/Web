@@ -1,0 +1,6 @@
+#calendar_frm {
+	display:inline-block;
+	position:relative;
+	left:50%;
+	padding-top: 0.2rem;
+}
