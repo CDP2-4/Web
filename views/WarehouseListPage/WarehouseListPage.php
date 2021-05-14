@@ -52,7 +52,7 @@
 </td>
                         <td>경북 군위군 군위읍 동서4길 14
 </td>
-                        <td>군위창고1</td>
+                        <td  style="text-decoration:underline" onclick="location.href='warehouse_modify.php';">군위창고1</td>
                     </tr>
                 </table>
 				<div class="paging">

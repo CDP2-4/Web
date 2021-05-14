@@ -53,7 +53,7 @@
                         <th>입고담당자</th>
                     </tr>
                     <tr>
-                        <td onClick="w_open('processing_popup.php', 'processing_popup.php', 500, 250, 200, 200);">65AF-178a86da23b-1366</td>
+                        <td style="text-decoration:underline" onClick="w_open('processing_popup.php', 'processing_popup.php', 700, 370, 200, 200);">65AF-178a86da23b-1366</td>
                         <td>대구창고1</td>
                         <td>2021-08-22 07:30:23</td>
                         <td>이서정</td>

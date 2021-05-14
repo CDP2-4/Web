@@ -12,10 +12,9 @@
 
 </head>
 
-<body>
+<body style="overflow-X:hidden; overflow-Y:hidden;">
 <div id="wrap">
 	<div class = "picture">
-			dkss
 	</div>
 	<div class = "list_title">
 					CAS번호
@@ -33,8 +32,8 @@
 				
 		</form>
            
-    <div class="btn_area01">
-		<input class="blue_btn" id="warehouse_register_button" type="button" value="완료"/>
+    <div class="warehouse_register_button">
+		<input class="blue_btn" id="warehouse_register_button" type="button" value="완료" onclick="javascript:self.close();"/>
 				
 	</div>
 </div>

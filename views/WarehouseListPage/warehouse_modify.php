@@ -30,7 +30,7 @@
         </ul>
         <div id="content2" >
 			<div class = "list_title">
-					*창고 주소
+					<span style="color:red">*</span>창고 주소
 			</div>
 				<form onsubmit>
 				<input id = "address1" class="input_box" type="text"/>
@@ -39,7 +39,7 @@
 				</form>
 				
 			<div class = "list_title">
-					*창고명
+					<span style="color:red">*</span>창고명
 			</div>
 				<form onsubmit>
 				<input id = "input_box" class="input_box" type="text" />

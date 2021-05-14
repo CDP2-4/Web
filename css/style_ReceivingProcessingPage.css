@@ -12,12 +12,13 @@
 }
 
 .picture {
-	width: 20rem;
-	height: 7rem;
+	width: 22rem;
+	height: 12rem;
 	float: left;
-	margin-left: 20px;
-	margin-top : 45px;
-	background-color: black;
+	margin-left: 75px;
+	margin-top : 50px;
+	margin-right: 40px;
+	background-color: #DAE3F3;
 }
 
 .input_box {
@@ -28,7 +29,13 @@
 
 .list_title {
 	width:100%;
-	margin-top: 50px;
-	margin-left: 30px;
+	margin-top: 55px;
+	margin-left: 60px;
 	text-align:left;
+}
+
+.warehouse_register_button{
+	float:left;
+	margin: 50px 0 0 375px;
+	text-align:center;
 }

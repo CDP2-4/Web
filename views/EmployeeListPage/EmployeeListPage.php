@@ -63,7 +63,7 @@
 							<th>상태</th>
 						</tr>
 						<tr>
-							<td>ididid</td>
+							<td  style="text-decoration:underline" onclick="location.href='employee_modify.php';">ididid</td>
 							<td>username</td>
 							<td>010-1111-2222</td>
 							<td>2021-04-07</td>
