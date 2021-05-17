@@ -47,8 +47,8 @@
 				</form>
            
             <div class="btn_area01">
-				<input class="blue_btn" id="warehouse_register_button" type="button" value="등록" onClick="location.href='WarehouseListPage.php';"/>
-				<input type="button" value="취소" class="blue_btn" onClick="location.href='WarehouseListPage.php';" />
+				<input class="blue_btn" id="warehouse_register_button" style = "margin-top: 20px;" type="button" value="등록" onClick="location.href='WarehouseListPage.php';"/>
+				<input type="button" value="취소" style = "margin-top: 20px;" class="blue_btn" onClick="location.href='WarehouseListPage.php';" />
 			</div>
         </div>
     </div>

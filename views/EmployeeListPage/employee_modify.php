@@ -31,22 +31,40 @@
         <div id="content2" >
 			<div class = "list_title">
 					<span style="color:red">*</span>아이디
+					<span style="color:red; margin-left : 400px;">*</span>이름
 			</div>
 				<form onsubmit>
-				<input class="input_box" type="text"/>
+				<input class="input_box" type="text" value = "sam0909" disabled/>
+				</form>
+				<form onsubmit>
+				<input class="input_box" type="text" style = "margin-left: 150px;"/>
 				</form>
 				
 			<div class = "list_title">
 					<span style="color:red">*</span>비밀번호
+					<span style="color:red; margin-left : 375px;">*</span>전화번호
 			</div>
 				<form onsubmit>
 				<input class="input_box" type="text" />
-				
+				<form onsubmit>
+				<input class="input_box" type="text" style = "margin-left: 150px;"/>
 				</form>
-           
+				</form>
+
+			<div class = "list_title">
+				상태
+			</div>
+			<div>
+				<select class = "selector" name="search_workplace" onchange="form_chk2(this.value);" style = "float:left; margin-left : 30px; margin-top : 10px">
+							<option value="">::선택::</option>
+							<option value="1">사용</option>
+							<option value="2">사용중지</option>
+						</select>
+			</div>
+		
             <div class="btn_area01">
-				<input class="blue_btn" type="button" value="수정"/>
-				<input type="button" value="취소" class="blue_btn" onClick="location.href='EmployeeListPage.php';" />
+				<input type="button" value="수정" class="blue_btn" style = "margin-top: 20px;" onClick="location.href='EmployeeListPage.php';" />
+				<input type="button" value="취소" class="blue_btn" style = "margin-top: 20px;"onClick="location.href='EmployeeListPage.php';" />
 			</div>
         </div>
     </div>

@@ -25,11 +25,10 @@
 			</ul>
 			<div id="content2">
 				<div class="m_input_btn_area">
-					<input type="button" value="회원생성" class="darkgray_btn" onclick="location.href='employee_write.php';" />
+					<input type="button" value="회원생성" class="blue_sbtn" onclick="location.href='employee_write.php';" />
 				</div>
 				<div class="m_search_area">
 					<form name="search_frm" method="post" action="home.php" onsubmit="return form_chk(this);">
-						회원 총 100명&nbsp;&nbsp;&nbsp;&nbsp;
 						<select class="selector" name="search_workplace" onchange="form_chk2(this.value);">
 							<option value="">::선택::</option>
 							<option value="1">전체</option>
@@ -42,7 +41,7 @@
 							<option value="2">이름</option>
 						</select>
 						<input type="text" name="search_id" value="" class="search_box" />
-						<input type="submit" value="검색" class="blue_sbtn" />&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="검색" class="blue_sbtn" style = "margin-left: 3px;"/>&nbsp;&nbsp;&nbsp;
 						
 					</form>
 				</div>
@@ -52,7 +51,7 @@
 							<col width="300" />
 							<col width="300" />
 							<col width="350" />
-							<col width="300" />
+							<col width="350" />
 							<col width="" />
 						</colgroup>
 						<tr>
@@ -63,11 +62,11 @@
 							<th>상태</th>
 						</tr>
 						<tr>
-							<td  style="text-decoration:underline" onclick="location.href='employee_modify.php';">ididid</td>
-							<td>username</td>
-							<td>010-1111-2222</td>
-							<td>2021-04-07</td>
-							<td>미사용 <input type="button" class="blue_ssbtn" value="변경" onclick="w_open('m_use_change.php', 'm_use_change', 500, 250, 200, 200);" /></td>
+							<td  style="text-decoration:underline" onclick="location.href='employee_modify.php';">sam0909</td>
+							<td>홍길동</td>
+							<td>010-3456-2222</td>
+							<td>2020-04-18</td>
+							<td>사용중지</td>
 						</tr>
 					</table>
 					<div class="paging">
