@@ -1,0 +1,14 @@
+.list_title {
+	float:left;
+	width:100%;
+	margin-top: 50px;
+	margin-left: 30px;
+	text-align:left;
+}
+
+.input_box {
+	width: 20rem;
+	float : left;
+	margin-left : 20px;
+	margin-top : 20px;
+}
