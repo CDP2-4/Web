@@ -138,14 +138,28 @@ ul.mcate_list li{
 	color: #fff;
 }
 
+ul.mcate_list .li_active {
+	width:180px;
+	margin-top:5px;
+	margin-left:20px;
+	padding-right:20px;
+	text-align: center;
+	line-height: 50px;
+	font-size:20px;
+	font-weight:550;
+	color: #44546A;
+	background-color: #FFFFFF;
+	border-top-left-radius: 27px;
+	border-bottom-left-radius: 27px;
+}
+
 ul.mcate_list li:hover,
-ul.mcate_list li:active {
+ul.mcate_list li:active{
 	color: #44546A;
 	border-top-left-radius: 27px;
 	border-bottom-left-radius: 27px;
 	background-color: #FFFFFF;
 }
-
 ul.mcate_list li dl.mcate_list_dl{
 	/* float:left; */
 	/* padding-left: 30px; */
