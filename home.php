@@ -16,13 +16,22 @@
 	window.open(p_url, p_name, "width="+p_width+", height="+p_height+", left="+p_left+", top="+p_top+", resizable=yes, scrollbars=auto");
 }
 </script>
+
 <div id="wrap">
     <?php include "include/header.php";?>
     <div id="container">
 		<?php include "include/a_side.php"; ?>
-        <div id="content2">
-            
-        </div>
+        <?php // 디비 연결 
+			include "common/connection.php"; 
+			$conn = new DBconn();
+			$conn->connection();
+			$query = "select * from admin_tbl";
+			$result = mysqli_query($conn->connect, $query);
+			$row = mysqli_fetch_array($result);
+			
+			printf("%s : %s", $row['admin_id'], $row['admin_pwd']);
+		?>
+
     </div>
 	<?php include "include/footer.php"; ?>
 </div>
