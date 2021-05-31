@@ -55,7 +55,7 @@
 
 							$query = 
 							"select 
-							warehouse_num, 
+							no, 
 							warehouse_name, 
 							warehouse_addr from warehouse_tbl";
 
@@ -68,7 +68,7 @@
 </td>
                         <td><?php print $row[2]; ?>
 </td>
-                        <td  style="text-decoration:underline" onclick="location.href='warehouse_modify.php?warehouse_num=<?php echo $row[0]?>';"> <?php print $row[1]; ?>
+                        <td  style="text-decoration:underline;cursor: pointer;" onclick="location.href='warehouse_modify.php?warehouse_num=<?php echo $row[0]?>';"> <?php print $row[1]; ?>
 						</td>
                     </tr>
 					<?php

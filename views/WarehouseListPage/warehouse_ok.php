@@ -8,11 +8,14 @@
 
 	//기업 고유번호는 어떻게 해결하지..? -> 로그인 기능
 	//창고 등록번호도 자동으로 올라가도록해야함. -> DB의 no를 따라가게 할까?
+	//DB의 no를 창고 등록번호로 사용해도 되지않나..?
 
     $warehouse_name = $_POST['warehouse_name'];
     $warehouse_addr = $_POST['warehouse_addr'];
     $warehouse_num = 5;
     $company_code = "Afrt";
+
+	//기업코드 생성해야함
 
 	//$query = "select no from warehouse_tbl where warehouse_num='".$warehouse_num."'";
 			

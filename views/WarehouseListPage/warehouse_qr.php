@@ -27,10 +27,11 @@
    
     if(!file_exists($filePath)) {
         $ecc = 'H';
-		$pixel_Size = 10;
+		$pixel_Size = 100;
 		$frame_Size = 10;
         //QRcode::png($qrContents, $filePath, $ecc, $pixel_Size, $frame_Size);
-		QRcode::png($qrContents);
+		//QRcode::png($qrContents);
+		QRcode::png($qrContents, false, $ecc, $pixel_Size, $frame_Size);
         echo "파일이 정상적으로 생성되었습니다.";
         echo "<hr/>";
     } else {

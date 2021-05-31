@@ -28,9 +28,9 @@
 					 <div class = "list_title" id="list_title">
 						생성 개수
 					</div>
-					<form onsubmit id="qr_form">
-						<input id="QR_input" class="input_box" type="text" />
-						<input class="blue_btn" id="next" type="button" value="다음"/>
+					<form action = "QRPrintPage.php" method="get">
+						<input id="QR_input" class="input_box" type="text" name="num"/>
+						<input class="blue_btn" id="next" type="submit" value="다음"/>
 					</form>
 				</div>
 			</div>

@@ -29,15 +29,16 @@
 			<div id="content2">
 				<div class="box" id="print_box">
 					<div class="qr_image">
-				   <?php
-				   for($i=1; $i<=40; $i++)
-				   {
-					  echo "<img src='/images/QR_image.png' alt='hi'>";
+					<?php
+					$num = $_GET['num'];
+					for($i=1; $i<=(int)$num; $i++)
+					{
+						echo "<img src='/images/QR_image.png' alt='hi'>";
 
-					  if($i%8==0)
-						 echo "<br/>";
-				   }
-				   ?>
+						if($i%8==0)
+						echo "<br/>";
+					}
+				?>
 				</div>
 
 				</div>
