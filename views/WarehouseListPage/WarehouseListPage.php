@@ -47,18 +47,39 @@
                         <th>주소</th>
                         <th>창고명</th>
                     </tr>
+					<?php
+							include "../../common/connection.php";
+
+							$conn = new DBconn();
+							$conn->connection(); 
+
+							$query = 
+							"select 
+							warehouse_num, 
+							warehouse_name, 
+							warehouse_addr from warehouse_tbl";
+
+							$result = mysqli_query($conn->connect, $query);
+							
+							while($row = mysqli_fetch_array($result)){
+						?>
                     <tr>
-                        <td>10
+                        <td><?php print $row[0]; ?>
 </td>
-                        <td>경북 군위군 군위읍 동서4길 14
+                        <td><?php print $row[2]; ?>
 </td>
-                        <td  style="text-decoration:underline" onclick="location.href='warehouse_modify.php';">군위창고1</td>
+                        <td  style="text-decoration:underline" onclick="location.href='warehouse_modify.php?warehouse_num=<?php echo $row[0]?>';"> <?php print $row[1]; ?>
+						</td>
                     </tr>
+					<?php
+							}
+							$conn->close();
+						?>
                 </table>
 				<div class="paging">
                     <ul class="clearfix">
 						<li class="box now_page">1</li>
-						<li class="box" onclick="location.href='?page=2&amp;constsize=30'">2</li>
+						<!-- <li class="box" onclick="location.href='?page=2&amp;constsize=30'">2</li>
 						<li class="box" onclick="location.href='?page=3&amp;constsize=30'">3</li>
 						<li class="box" onclick="location.href='?page=4&amp;constsize=30'">4</li>
 						<li class="box" onclick="location.href='?page=5&amp;constsize=30'">5</li>
@@ -67,7 +88,7 @@
 						<li class="box" onclick="location.href='?page=8&amp;constsize=30'">8</li>
 						<li class="box" onclick="location.href='?page=9&amp;constsize=30'">9</li>
 						<li class="box" onclick="location.href='?page=10&amp;constsize=30'">10</li>
-						<li class="box" onclick="location.href='?page=11&amp;constsize=30'">&gt;</li>
+						<li class="box" onclick="location.href='?page=11&amp;constsize=30'">&gt;</li> -->
 					</ul>
 				</div>
             </div>

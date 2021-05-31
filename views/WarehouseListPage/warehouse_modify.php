@@ -29,27 +29,42 @@
             </li>
         </ul>
         <div id="content2" >
+		<?php
+				include "../../common/connection.php";
+
+				$conn = new DBconn();
+				$conn->connection();
+
+				$warehouse_num = $_GET['warehouse_num'];
+				$query = "select warehouse_name, warehouse_addr from warehouse_tbl where warehouse_num='".$warehouse_num."'";
+			
+				$result = mysqli_query($conn->connect, $query);
+				$row = mysqli_fetch_array($result);
+
+				$warehouse_name = $row['warehouse_name'];
+				$warehouse_addr = $row['warehouse_addr'];
+
+				$conn->close();
+			?>
+			<div>
+			<form action = "warehouse_modify_ok.php?warehouse_num=<?php echo $warehouse_num;?>" method="post"> 
 			<div class = "list_title">
 					<span style="color:red">*</span>창고 주소
 			</div>
-				<form onsubmit>
-				<input id = "address1" class="input_box" type="text"/>
+				<input id = "address1" name = "warehouse_addr" class="input_box" type="text" value = <?php echo $warehouse_addr; ?>>
 				<input id = "address2" class="input_box" type="text"/>
-				
-				</form>
 				
 			<div class = "list_title">
 					<span style="color:red">*</span>창고명
 			</div>
-				<form onsubmit>
-				<input id = "input_box" class="input_box" type="text" />
-				
-				</form>
+				<input id = "input_box" name = "warehouse_name" class="input_box" type="text" value = <?php echo $warehouse_name; ?>>
            
             <div class="btn_area01">
-				<input class="blue_btn" id="warehouse_register_button" style = "margin-top: 20px;" type="button" value="수정"/>
+				<input class="blue_btn" style = "margin-top: 20px;" type="submit" value="수정"/>
 				<input type="button" value="취소" class="blue_btn" style = "margin-top: 20px;" onClick="location.href='WarehouseListPage.php';" />
-				<input type="button" value="QR생성" class="blue_btn" style = "margin-top: 20px;" onClick="location.href='WarehouseListPage.php';" />
+				<input type="button" value="QR생성" class="blue_btn" style = "margin-top: 20px;" onClick="location.href='warehouse_qr.php?warehouse_num=<?php echo $warehouse_num;?>'" />
+			</div>
+			</form>
 			</div>
         </div>
     </div>

@@ -15,6 +15,7 @@
 <div id="wrap">
     <?php include "../../include/header.php";?>
     <div id="container">
+
 		<?php include "../../include/a_side.php"; ?>
 		<ul class="title">
             <li>
@@ -29,28 +30,26 @@
             </li>
         </ul>
         <div id="content2" >
+		<div>
+		<form action = "warehouse_ok.php" method="post"> 
 			<div class = "list_title">
 					<span style="color:red">*</span>창고 주소
 			</div>
-				<form onsubmit>
+				<input class="input_box" name = "warehouse_addr" type="text"/>
 				<input class="input_box" type="text"/>
-				<input class="input_box" type="text"/>
-				
-				</form>
 				
 			<div class = "list_title">
 					<span style="color:red">*</span>창고명
 			</div>
-				<form onsubmit>
-				<input class="input_box" type="text" />
-				
-				</form>
+				<input class="input_box" name = "warehouse_name" type="text" />
            
             <div class="btn_area01">
-				<input class="blue_btn" id="warehouse_register_button" style = "margin-top: 20px;" type="button" value="등록" onClick="location.href='WarehouseListPage.php';"/>
-				<input type="button" value="취소" style = "margin-top: 20px;" class="blue_btn" onClick="location.href='WarehouseListPage.php';" />
+				<input class="blue_btn" style = "margin-top: 40px;" type="submit" value="등록" />
+				<input type="button" value="취소" style = "margin-top: 40px;" class="blue_btn" onClick="location.href='WarehouseListPage.php';" />
 			</div>
+		</form>
         </div>
-    </div>
+		</div>
+		</div>
 	<?php include "../../include/footer.php"; ?>
 </div>
