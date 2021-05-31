@@ -3,12 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>창고 등록</title>
+<title>업체 등록</title>
 
 <link rel="stylesheet" type="text/css" href="/css/default.css" />
 <link rel="stylesheet" type="text/css" href="/css/layout.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/css/style_WarehouseListPage.css" />
+<link rel="stylesheet" type="text/css" href="/css/style_Admin.css" />
 
 </head>
 
@@ -30,46 +30,57 @@ function goPopup(){
 <div id="wrap">
     <?php include "../../include/header.php";?>
     <div id="container">
-
-		<?php include "../../include/a_side.php"; ?>
+		<?php include "../../include/b_side.php"; ?>
 		<ul class="title">
             <li>
                 <div class="mainTitle">
-                    창고 등록
+                    업체 등록
                 </div>
             </li>
             <li>
                 <div class="subTitle">
-                    Register Warehouse
+                    Register Company
                 </div>
             </li>
         </ul>
-        <div id="content2" >
-		<div class="member_list_area">
-		<form action = "warehouse_ok.php" method="post"> 
-			<table class="form_table">
+        <div id="content2">
+			<div class="member_list_area">
+				<form action="company_register_ok.php" method="post">
+					<table class="form_table">
 						<colgroup>
 							<col width="200" />
 							<col width="300" />
 						</colgroup>
 						<tr>
-							<th><span style="color:red">*</span>창고 주소</th>
-							<td><input id = "roadFullAddr" name = "warehouse_addr" class="input_box" type="text">
-				<input class="blue_btn" type="button" value = "주소검색" style = "margin-top: 5px; margin-left:5px;"onclick = "goPopup();" ></td>
+							<th><span style="color:red">*</span>업체명</th>
+							<td><input class="input_box" name="name" type="text"/></td>
 						</tr>
 						<tr>
-							<th><span style="color:red">*</span>창고명</th>
-							<td><input id = "input_box" name = "warehouse_name" class="input_box" type="text"></td>
+							<th><span style="color:red">*</span>관리자 아이디</th>
+							<td><input class="input_box" name="id" type="text"/></td>
 						</tr>
-			</table>
-           
-            <div class="btn_area01">
-				<input class="blue_btn" style = "margin-top: 40px;" type="submit" value="등록" >
-				<input type="button" value="취소" style = "margin-top: 40px;" class="blue_btn" onClick="location.href='WarehouseListPage.php';" >
+						<tr>
+							<th><span style="color:red">*</span>관리자 비밀번호</th>
+							<td><input class="input_box" name="passwd" type="password"/></td>
+						</tr>
+						<tr>
+							<th><span style="color:red">*</span>주소</th>
+							<td><input class="input_box" id = "roadFullAddr" name="address" type="text"/>
+							<input class="blue_btn" type="button" value = "주소검색" style = "margin-top: 5px; margin-left:5px;"onclick = "goPopup();" ></td>
+							
+						</tr>
+						<tr>
+							<th>비고</th>
+							<td><input class="input_box" name="remark" type="text"/></td>
+						</tr>
+					</table>
+					<div class="admin_btn_area">
+						<input type="submit" value="완료" class="blue_btn" style="margin-right: 5px"/>
+						<input type="button" value="취소" class="blue_btn" onclick="location.href='company_list.php';"/>
+					</div>
+				</form>
 			</div>
-		</form>
         </div>
-		</div>
-		</div>
+    </div>
 	<?php include "../../include/footer.php"; ?>
 </div>

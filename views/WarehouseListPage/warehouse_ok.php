@@ -14,6 +14,8 @@
     $warehouse_num = 5;
     $company_code = "Afrt";
 
+	//$query = "select no from warehouse_tbl where warehouse_num='".$warehouse_num."'";
+			
     $query = "
         insert into warehouse_tbl (
             warehouse_num, 
