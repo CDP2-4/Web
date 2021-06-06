@@ -49,7 +49,7 @@ strong, b{font-weight:bold;}
 	padding: 1.5rem 1rem;
 	line-height: 28px;
 	font-size: 1.2rem;
-	border-radius: 10px;
+	border-radius: 5px;
 	background-color: #F7F7F7;
 }
 
@@ -59,6 +59,7 @@ strong, b{font-weight:bold;}
 	line-height: 28px;
 	font-size: 1rem;
 	border-radius: 5px;
+
 }
 
 .selector {
@@ -130,7 +131,7 @@ strong, b{font-weight:bold;}
 	background:#DAE3F3;
 	color:#5C8EFF;
 	font-weight:700;
-	font-size:1.55rem;
+	font-size:1.2rem;
 }
 
 .blue_sbtn{	

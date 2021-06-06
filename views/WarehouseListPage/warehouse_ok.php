@@ -1,5 +1,5 @@
 <?php
-	
+	include "../../common/session.php";
     include "../../common/connection.php";
 
 	//DB연결, insert
@@ -12,21 +12,14 @@
 
     $warehouse_name = $_POST['warehouse_name'];
     $warehouse_addr = $_POST['warehouse_addr'];
-    $warehouse_num = 5;
-    $company_code = "Afrt";
-
-	//기업코드 생성해야함
-
-	//$query = "select no from warehouse_tbl where warehouse_num='".$warehouse_num."'";
+    $company_code = $_SESSION['code'];
 			
     $query = "
         insert into warehouse_tbl (
-            warehouse_num, 
             warehouse_name, 
             warehouse_addr, 
 			company_code
         ) values (
-            '".$warehouse_num."',
             '".$warehouse_name."',
             '".$warehouse_addr."',
 			'".$company_code."')";

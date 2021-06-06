@@ -1,4 +1,4 @@
-
+<?php include "../../common/session.php"; ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>QR 생성</title>
@@ -25,9 +25,7 @@
 		<div id="content2">
 			<div class="box" id="qrfrm_box">
 				<div class="qrfrm_content">
-					 <div class = "list_title" id="list_title">
-						생성 개수
-					</div>
+					<div class = "list_title" id="list_title">생성 개수</div>
 					<form action = "QRPrintPage.php" method="get">
 						<input id="QR_input" class="input_box" type="text" name="num"/>
 						<input class="blue_btn" id="next" type="submit" value="다음"/>

@@ -11,6 +11,21 @@
 	border-bottom:3px solid #0770cb;
 }
 
+#page_hor {
+	width: 297mm;
+	margin-top: 10mm;
+	text-align: center;
+}
+
+#page_ver {
+	width: 210mm;
+	margin-top: 10mm;
+}
+
+#qr_area {
+	
+}
+
 #logo_area{
 	float:left;
 	width:250px;
@@ -107,3 +122,8 @@
 	width:400px;
 }
 
+#cas_picture{
+	width: 22rem;
+	height: 12rem;
+	object-fit: contain;
+}

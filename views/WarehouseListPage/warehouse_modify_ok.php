@@ -1,7 +1,7 @@
 <?php 
     include "../../common/connection.php";
 
-	$warehouse_num = $_GET['warehouse_num'];
+	$no = $_GET['no'];
     $warehouse_name = $_POST['warehouse_name'];
     $warehouse_addr = $_POST['warehouse_addr'];
 
@@ -10,7 +10,7 @@
 
     $query = "update warehouse_tbl set 
     warehouse_name='$warehouse_name', 
-    warehouse_addr='$warehouse_addr' where warehouse_num='$warehouse_num'";
+    warehouse_addr='$warehouse_addr' where no='$no'";
 
     $result = mysqli_query($conn->connect, $query);
 	$conn->close();

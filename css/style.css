@@ -4,6 +4,7 @@ h1.login_h1{
 	font-size:50px;
 	font-weight:700;
 	text-align:center;
+	margin-top: 8%;
 }
 
 .h1_subtitle{
@@ -76,7 +77,6 @@ h1.login_h1{
 	border-radius:3px;
 }
 
-
 .m_search_area{
 	float:right;
 	/*width:500px;*/
@@ -89,12 +89,31 @@ h1.login_h1{
 	text-align:right;
 }
 
-
 .member_list_area{
 	float:left;
 	width:98.5%;
-	margin-top:15px;
+	margin-top:30px;
 	padding-left:1.5rem;
+}
+
+.form_table {
+	width: 80%;
+	border-top:2px solid #333;
+	border-bottom:2px solid #333;
+	margin-left: 9%;
+}
+
+.form_table th, .form_table td{
+	padding:15px 0;
+	border-bottom:1px solid #333;
+	font-size:20px;
+}
+
+.form_table th{
+	background:#DAE3F3;
+	border-bottom:1px solid #333;
+	font-weight:550;
+	font-size:20px;
 }
 
 .list_table{

@@ -7,8 +7,13 @@
 }
 
 .input_box {
-	width: 20rem;
+	width: 30rem;
 	float : left;
 	margin-left : 20px;
-	margin-top : 20px;
+}
+
+.admin_btn_area {
+	float:right;
+	margin-top: 15px;
+	margin-right: 10%;
 }

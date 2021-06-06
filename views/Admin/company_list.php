@@ -1,9 +1,11 @@
+<?php include "../../common/session.php"; ?>
+
 <!doctype html>
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html;" charset="utf-8" />
 
-<title>창고 목록</title>
+<title>업체 목록</title>
 
 <link rel="stylesheet" type="text/css" href="/css/default.css" />
 <link rel="stylesheet" type="text/css" href="/css/layout.css" />

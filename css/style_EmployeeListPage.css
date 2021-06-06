@@ -7,10 +7,13 @@
 }
 
 .input_box {
-	width: 20rem;
-	float : left;
+	float:left;
+	width: 30rem;
 	margin-left : 20px;
-	margin-top : 20px;
 }
 
-
+.employee_btn_area {
+	float:right;
+	margin-top: 15px;
+	margin-right: 10%;
+}

@@ -1,3 +1,6 @@
+<?php include "../../common/session.php"; ?>
+<?php include "../../common/paging.php"; ?>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -10,11 +13,7 @@
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
 </head>
-<script>
-	function w_open(p_url, p_name, p_width, p_height, p_top, p_left){
-	window.open(p_url, p_name, "width="+p_width+", height="+p_height+", left="+p_left+", top="+p_top+", resizable=yes, scrollbars=auto");
-}
-</script>
+
 <div id="wrap">
     <?php include "../../include/header.php";?>
     <div id="container">
@@ -31,6 +30,10 @@
                 </div>
             </li>
         </ul>
+		<?php 
+			$code = $_SESSION['code'];
+			$page = $_REQUEST[page];
+		?>
         <div id="content2">
             <div class="m_input_btn_area">
                 <input type="button" value="추가" class="blue_sbtn" onclick="location.href='warehouse_write.php';" />
@@ -48,27 +51,49 @@
                         <th>창고명</th>
                     </tr>
 					<?php
-							include "../../common/connection.php";
+					include "../../common/connection.php";
 
-							$conn = new DBconn();
-							$conn->connection(); 
+					$conn = new DBconn();
+					$conn->connection(); 
 
-							$query = 
-							"select 
-							no, 
-							warehouse_name, 
-							warehouse_addr from warehouse_tbl";
+					$query = 
+					"select 
+					no, 
+					warehouse_name, 
+					warehouse_addr from warehouse_tbl where company_code='$code'";
 
-							$result = mysqli_query($conn->connect, $query);
+					$bbs_psu=8;
+					$bbs_pagesu=5000;
+					
+					$result = mysqli_query($conn->connect, $query);
+					
+					#전체 레코드수
+					$total_record = mysqli_num_rows($result);
+					if(!$page) {
+						$page=1;
+					}
+
+					#전체 페이지수
+					$total_page=ceil($total_record/$bbs_psu);
+					#시작값과 종료값
+					if($total_record == 0) {
+						$first=1;
+						$last=0;
+					}
+					else {
+						$first=$bbs_psu*($page-1);
+						$last=$bbs_psu*$page;
+					}
+
+					$query .=  " order by no asc limit ".$first.", ".$bbs_psu."";
+					$result = mysqli_query($conn->connect, $query);
 							
 							while($row = mysqli_fetch_array($result)){
 						?>
                     <tr>
-                        <td><?php print $row[0]; ?>
-</td>
-                        <td><?php print $row[2]; ?>
-</td>
-                        <td  style="text-decoration:underline;cursor: pointer;" onclick="location.href='warehouse_modify.php?warehouse_num=<?php echo $row[0]?>';"> <?php print $row[1]; ?>
+                        <td><?php print $row[0]; ?></td>
+                        <td><?php print $row[2]; ?></td>
+                        <td  style="text-decoration:underline;cursor: pointer;" onclick="location.href='warehouse_modify.php?no=<?php echo $row[0]?>';"> <?php print $row[1]; ?>
 						</td>
                     </tr>
 					<?php
@@ -77,19 +102,7 @@
 						?>
                 </table>
 				<div class="paging">
-                    <ul class="clearfix">
-						<li class="box now_page">1</li>
-						<!-- <li class="box" onclick="location.href='?page=2&amp;constsize=30'">2</li>
-						<li class="box" onclick="location.href='?page=3&amp;constsize=30'">3</li>
-						<li class="box" onclick="location.href='?page=4&amp;constsize=30'">4</li>
-						<li class="box" onclick="location.href='?page=5&amp;constsize=30'">5</li>
-						<li class="box" onclick="location.href='?page=6&amp;constsize=30'">6</li>
-						<li class="box" onclick="location.href='?page=7&amp;constsize=30'">7</li>
-						<li class="box" onclick="location.href='?page=8&amp;constsize=30'">8</li>
-						<li class="box" onclick="location.href='?page=9&amp;constsize=30'">9</li>
-						<li class="box" onclick="location.href='?page=10&amp;constsize=30'">10</li>
-						<li class="box" onclick="location.href='?page=11&amp;constsize=30'">&gt;</li> -->
-					</ul>
+					<?=paging($bbs_psu,10,"",$page,"?type=info",$total_page)?>
 				</div>
             </div>
         </div>

@@ -1,3 +1,6 @@
+<?php include "../../common/session.php"; ?>
+<?php include "../../common/paging.php"; ?>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -21,21 +24,65 @@
 			    <li><div class="subTitle">Entry and exit status</div></li>
 			</ul>
 			<div id="content2">
-					<?php
-						$DateAndTime = date('Y-m-d', time());
-					?>
-					<form id="calender_frm" name="date_frm" method="post" onsubmit>
-						<input class="calendar" type="date" name="date_selector_start" value="<?php echo $DateAndTime ?>"/>
-						<input class="calendar" type="date" name="date_selector_end" value="<?php echo $DateAndTime ?>"/>
-					</form>
+				<?php 
+					$DateAndTime = date('Y-m-d', time());
+					$start = $DateAndTime;
+					$end = $DateAndTime;
+					$category = 1;
+					$search_word = "";
+					$code = $_SESSION['code'];
+					$page = $_REQUEST[page];
+				?>
 				<div class="m_search_area">
-					<form name="search_frm" method="post" action="" onsubmit="return form_chk(this);">
+				<?php
+				$category = $_GET["search_workplace"];
+
+					if(empty($_GET["date_selector_start"])){ 
+						$where .= " and (in_time between DATE(NOW()) AND DATE_ADD(NOW(), INTERVAL +1 DAY))";
+					}
+					else {
+						if($_REQUEST[date_selector_start]){
+							$start = $_REQUEST[date_selector_start];
+							if($_REQUEST[date_selector_end]){
+								$end = $_REQUEST[date_selector_end];
+								$where .= " and (date_format(date_format(in_time, '%Y-%m-%d'), '%Y-%m-%d') between '$_REQUEST[date_selector_start]' and '$_REQUEST[date_selector_end]')";
+							}
+							else{
+								$where .= " and (date_format(date_format(in_time, '%Y-%m-%d'), '%Y-%m-%d') >= '$_REQUEST[date_selector_start]')";
+							}
+						}
+						elseif($_REQUEST[date_selector_end]){
+							$end = $_REQUEST[date_selector_end];
+							$where .= " and (date_format(date_format(in_time, '%Y-%m-%d'), '%Y-%m-%d') <= '$_REQUEST[date_selector_end]')";
+						}
+					}
+
+					if(empty($_REQUEST["search_word"])){ // 검색어가 empty일 때 예외처리를 해준다.
+						$search_word ="";
+					} else {
+						$search_word =$_REQUEST["search_word"];
+						switch($category) {
+									case 1:
+										$where .= " and ((user_id LIKE '%$search_word%') or (warehouse_name LIKE '%$search_word%'))";
+										break;
+									case 2:
+										$where .= " and (warehouse_name LIKE '%$search_word%')";
+										break;
+									case 3:
+										$where .= " and (user_id LIKE '%$search_word%')";
+										break;
+								}
+					}
+					?>
+					<form name="search_frm" method="get" action="" onsubmit="return form_chk(this);">
+						<input class="calendar" type="date" name="date_selector_start" value="<?php echo $start ?>"/>
+						<input class="calendar" type="date" name="date_selector_end" value="<?php echo $end ?>"/>
 						<select name="search_workplace" onchange="form_chk2(this.value);" class="selector">
-							<option value="">::선택::</option>
-							<option value="1">창고명</option>
-							<option value="2">이름</option>
+							<option value="1" <?php if($category == 1) echo "selected" ?>>::전체::</option>
+							<option value="2" <?php if($category == 2) echo "selected" ?>>창고명</option>
+							<option value="3" <?php if($category == 3) echo "selected" ?>>아이디</option>
 						</select>
-						<input type="text" name="search_id" value="" class="search_box" />
+						<input type="text" name="search_word" value="<?php echo $search_word ?>" class="search_box" />
 						<input type="submit" value="검색" class="blue_sbtn" />
 					</form>
 				</div>
@@ -43,40 +90,72 @@
 					<table class="list_table">
 						<colgroup>
 							<col width="250" />
-							<col width="250" />
-							<col width="300" />
-							<col width="300" />
+							<col width="350" />
+							<col width="400" />
 							<col width="" />
 						</colgroup>
 						<tr>
-							<th>이름</th>
 							<th>아이디</th>
 							<th>창고명</th>
 							<th>입(入) 시간</th>
 							<th>출(出) 시간</th>
 						</tr>
+					<?php 
+						include "../../common/connection.php";
+
+						$conn = new DBconn();
+						$conn->connection(); 
+				
+						$query = "SELECT warehouse_name, 
+								user_id, 
+								in_time, 
+								out_time 
+								FROM inout_tbl JOIN warehouse_tbl where inout_tbl.warehouse_no = warehouse_tbl.no $where";
+						
+						$query .= " AND inout_tbl.company_code='$code'";
+						
+						$bbs_psu=2;
+					$bbs_pagesu=5000;
+					
+					$result = mysqli_query($conn->connect, $query);
+					
+					#전체 레코드수
+					$total_record = mysqli_num_rows($result);
+					if(!$page) {
+						$page=1;
+					}
+
+					#전체 페이지수
+					$total_page=ceil($total_record/$bbs_psu);
+					#시작값과 종료값
+					if($total_record == 0) {
+						$first=1;
+						$last=0;
+					}
+					else {
+						$first=$bbs_psu*($page-1);
+						$last=$bbs_psu*$page;
+					}
+
+					$query .=  " order by user_id asc limit ".$first.", ".$bbs_psu."";
+					//echo $query;
+					$result = mysqli_query($conn->connect, $query);
+
+						while($row = mysqli_fetch_array($result)){
+					?>
 						<tr>
-							<td>username</td>
-							<td>id</td>
-							<td>대구창고1</td>
-							<td>2021-03-31 00:02</td>
-							<td>2021-03-31 00:30</td>
+							<td><?php print $row[1]; ?></td>
+							<td><?php print $row[0]; ?></td>
+							<td><?php print $row[2]; ?></td>
+							<td><?php print $row[3]; ?></td>
 						</tr>
+						<?php
+							}
+							$conn->close();
+						?>
 					</table>
 					<div class="paging">
-						<ul class="clearfix">
-							<li class="box now_page">1</li>
-							<li class="box" onclick="location.href='?page=2&amp;constsize=30'">2</li>
-							<li class="box" onclick="location.href='?page=3&amp;constsize=30'">3</li>
-							<li class="box" onclick="location.href='?page=4&amp;constsize=30'">4</li>
-							<li class="box" onclick="location.href='?page=5&amp;constsize=30'">5</li>
-							<li class="box" onclick="location.href='?page=6&amp;constsize=30'">6</li>
-							<li class="box" onclick="location.href='?page=7&amp;constsize=30'">7</li>
-							<li class="box" onclick="location.href='?page=8&amp;constsize=30'">8</li>
-							<li class="box" onclick="location.href='?page=9&amp;constsize=30'">9</li>
-							<li class="box" onclick="location.href='?page=10&amp;constsize=30'">10</li>
-							<li class="box" onclick="location.href='?page=11&amp;constsize=30'">&gt;</li>
-						</ul>
+						<?=paging($bbs_psu,10,"",$page,"&date_selector_start=$_GET[date_selector_start]&date_selector_end=$_GET[date_selector_end]&search_workplace=$_GET[search_workplace]&search_word=$_GET[search_word]",$total_page)?>
 					</div>
 				</div>
 			</div>
